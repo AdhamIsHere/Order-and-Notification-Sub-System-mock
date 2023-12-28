@@ -1,4 +1,4 @@
-package Models;
+package com.example.SDA_2.Models;
 
 import java.util.ArrayList;
 
@@ -25,7 +25,7 @@ public class SimpleOrder extends Order {
 
         for(Product i : products)
         {
-            System.out.println("name "+ i.name + " " +i.price+" " + i.category + " " + i.serialNumber + " " + i.vendor) ;
+            System.out.println(i.toString()) ;
         }
 
     }

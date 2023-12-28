@@ -1,6 +1,4 @@
-package Models;
-
-import org.springframework.context.annotation.ScopeMetadata;
+package com.example.SDA_2.Models;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +7,8 @@ public class Compound extends Order {
 
     ArrayList<ArrayList<Product>> Product_list;
     ArrayList<Customer> Customer_list;
+
+    HashMap<Customer,Order> orders = new HashMap<>();
 
     Compound() {
         Product_list = new ArrayList<>();

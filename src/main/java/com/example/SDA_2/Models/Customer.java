@@ -1,8 +1,18 @@
-package Models;
+package com.example.SDA_2.Models;
 
 public class Customer {
     String name,userName,password;
     float balance;
+
+    public Customer(String name, String userName, String password, float balance) {
+        this.name = name;
+        this.userName = userName;
+        this.password = password;
+        this.balance = balance;
+    }
+    public Customer(){
+
+    }
 
     public String getName() {
         return name;

@@ -1,75 +1,7 @@
-package Models;
+package com.example.SDA_2.Models;
 
 public class Product {
-
-    String serialNumber,name,vendor,category;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+    String serialNumber, name, vendor, category;
     float price;
 
     public String getSerialNumber() {

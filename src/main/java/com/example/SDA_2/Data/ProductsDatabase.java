@@ -1,6 +1,6 @@
-package Data;
+package com.example.SDA_2.Data;
 
-import Models.Product;
+import com.example.SDA_2.Models.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;

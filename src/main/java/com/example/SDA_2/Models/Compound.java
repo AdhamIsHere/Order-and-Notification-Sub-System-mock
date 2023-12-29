@@ -24,15 +24,17 @@ public class Compound extends Order {
     @Override
     public void printOrder() {
 
-
+        for (Customer c : orders.keySet()) {
+            orders.get(c).printOrder();
+        }
     }
 
 
-//    public boolean addProduct(Customer c, Product... p) {
-//        if (orders.containsKey(c)) {
-//            orders.get(c).addOrder(p);
-//            return true;
-//        }
-//        return false;
-//    }
+    public boolean addProduct(Customer c, Product... p) {
+
+        Order NewOrder = new SimpleOrder();
+        NewOrder.addProduct(c, p);
+        orders.put(c, NewOrder);
+        return true;
+    }
 }

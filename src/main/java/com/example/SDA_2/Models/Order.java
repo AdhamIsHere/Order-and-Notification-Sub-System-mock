@@ -18,6 +18,8 @@ public abstract class Order {
         throw new UnsupportedOperationException();
     }
 
+    public abstract boolean addProduct(Customer c, Product... p);
+
 
 
 }

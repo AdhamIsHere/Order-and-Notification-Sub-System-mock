@@ -32,8 +32,12 @@ public class SimpleOrder extends Order {
 
     }
 
-    public void addProduct(Product... p) {
+    @Override
+    public boolean addProduct(Customer c, Product... p) {
         products.addAll(List.of(p));
-
+        owner = c ;
+        return true ;
     }
+
+
 }

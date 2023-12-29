@@ -35,8 +35,8 @@ public class CustomerDatabase {
     }
 
     public static Customer getCustomerByUsernameAndPassword(String un, String pw) {
-        for (Customer i : customers) {
-            if (i.getUserName().equals(un) && i.getPassword().equals(pw)) return i;
+        for (int i=0;i<customers.size();i++) {
+            if (customers.get(i).getUserName().equals(un) && customers.get(i).getPassword().equals(pw)) return customers.get(i);
         }
         return null;
     }

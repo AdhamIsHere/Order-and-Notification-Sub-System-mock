@@ -1,6 +1,7 @@
 package com.example.SDA_2.Models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SimpleOrder extends Order {
     ArrayList <Product> products;
@@ -10,14 +11,15 @@ public class SimpleOrder extends Order {
         products = new ArrayList<>() ;
     }
     @Override
-    public void calcTotal() {
-
+    public int calcTotal() {
+        int sum=0;
         for(Product i : products)
         {
-            Total += i.price;
+            sum += i.price;
         }
-        System.out.println("Total price is "+Total);
-
+        System.out.println("Total price of order "+this.id+" is "+sum);
+        Total=sum;
+        return sum;
     }
 
     @Override
@@ -30,8 +32,8 @@ public class SimpleOrder extends Order {
 
     }
 
-    public void addProduct(ArrayList<Product> p) {
-        products.addAll(p);
+    public void addProduct(Product... p) {
+        products.addAll(List.of(p));
 
     }
 }

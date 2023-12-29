@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
-
+    Customer loggedin;
     @Autowired
     AccountServiceImp accountService;
     @PostMapping("/add")
@@ -38,9 +38,18 @@ public class CustomerController {
         System.out.println("In get by username"+un);
         return CustomerDatabase.getCustomerByUsername(un);
     }
-    @GetMapping("/habal")
-    public String habal() {
-
-        return "habal";
+    @GetMapping("/login/{un}/{pw}")
+    public Response login(@PathVariable("un") String un,@PathVariable("pw") String pw) {
+        System.out.println("In Login "+un+" "+pw);
+        loggedin = CustomerDatabase.getCustomerByUsernameAndPassword(un,pw);
+        Response res = new Response();
+        if(loggedin == null){
+            res.setStatus(false);
+            res.setMessage("Check Username and Password");
+        }else {
+            res.setStatus(true);
+            res.setMessage("Logged in Successfully");
+        }
+        return res;
     }
 }

@@ -3,11 +3,12 @@ package com.example.SDA_2.Models;
 import java.util.ArrayList;
 
 public abstract class Order {
+    String id;
     float Total = 0;
-    String owner;
-    public abstract void calcTotal();
+    Customer owner;
+    public abstract int calcTotal();
     public abstract void printOrder();
-    public void addOrder(Order o){
+    public boolean addOrder(Order o){
         throw new UnsupportedOperationException();
     }
     public void removeOrder(Order o){

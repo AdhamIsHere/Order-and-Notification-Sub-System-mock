@@ -1,4 +1,4 @@
-package com.example.SDA_2.Models;
+package com.example.SDA_2.Models.Product;
 
 public class Product {
     String serialNumber, name, vendor, category;

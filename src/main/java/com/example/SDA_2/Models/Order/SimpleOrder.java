@@ -1,7 +1,7 @@
 package com.example.SDA_2.Models.Order;
 
 import com.example.SDA_2.Models.Customer;
-import com.example.SDA_2.Models.Product;
+import com.example.SDA_2.Models.Product.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +52,7 @@ public class SimpleOrder extends Order {
     @Override
     public boolean addProduct(Customer c, Product... p) {
         products.addAll(List.of(p));
-        owner1 = c ;
+        owner = c ;
         return true ;
     }
 
@@ -62,8 +62,8 @@ public class SimpleOrder extends Order {
                 "products=" + products +
                 ", id='" + id + '\'' +
                 ", Total=" + Total +
-                ", owner1=" + owner1 +
-                ", owner='" + owner + '\'' +
+                ", owner1=" + owner +
+                ", owner='" + ownerHelper + '\'' +
                 '}';
     }
 }

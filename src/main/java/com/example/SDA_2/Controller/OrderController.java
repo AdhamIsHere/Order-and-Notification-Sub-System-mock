@@ -24,7 +24,6 @@ public class OrderController {
             res.setMessage("Must Login First");
             return res;
         }
-        orderServiceImp.createOrder(o);
         o.calcTotal();
        res = orderServiceImp.createOrder(o);
 
@@ -38,6 +37,7 @@ public class OrderController {
             res.setMessage("Must Login First");
             return res;
         }
+
         return res;
     }
 }

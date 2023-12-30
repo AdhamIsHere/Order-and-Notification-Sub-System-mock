@@ -25,8 +25,8 @@ public class CompoundOrder extends Order {
     }
 
     @Override
-    public int calcTotal() {
-        int sum = 0;
+    public float calcTotal() {
+        float sum = 0;
         for (Order i : orders) {
             sum += i.calcTotal();
         }

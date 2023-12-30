@@ -2,7 +2,7 @@ package com.example.SDA_2.Models;
 
 public class Product {
     String serialNumber, name, vendor, category;
-    float price;
+    public float price;
 
     public String getSerialNumber() {
         return serialNumber;

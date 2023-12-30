@@ -57,7 +57,7 @@ public abstract class Order {
     }
 
 
-    public abstract int calcTotal();
+    public abstract float calcTotal();
     public abstract void printOrder();
     public boolean addOrder(Order o){
         throw new UnsupportedOperationException();

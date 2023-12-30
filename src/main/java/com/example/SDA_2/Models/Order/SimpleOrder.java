@@ -28,8 +28,8 @@ public class SimpleOrder extends Order {
 
 
     @Override
-    public int calcTotal() {
-        int sum=0;
+    public float calcTotal() {
+        float sum=0;
         for(Product i : products)
         {
             sum += i.getPrice();

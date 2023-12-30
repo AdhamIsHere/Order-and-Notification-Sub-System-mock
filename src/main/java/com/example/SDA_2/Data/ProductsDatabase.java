@@ -7,11 +7,28 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class ProductsDatabase {
-    public static ArrayList<Product> products = new ArrayList<>(Arrays.asList(
-            new Product("1234", "Caseoh", "fadl", "good", 500),
-            new Product("1345", "Case123oh", "fa1dl", "goo3d", 5010)
-    ));
+public class ProductsDatabase
+{
+    private static ArrayList<Product> products = new ArrayList<>();
+    private static ProductsDatabase Productinstance=null;
+    private ProductsDatabase()
+    {
+       products = new ArrayList<>(Arrays.asList(
+                new Product("1234", "Hoodie", "Zara", "Clothes", 500),
+                new Product("5678", "Mobile", "Tradeline", "Electronics", 15000),
+               new Product("9101", "Neckless", "Lazurde", "Jewellery", 5500)
+        ));
+
+    }
+    public static ProductsDatabase GetProductInstance()
+    {
+        if (Productinstance == null)
+        {
+            Productinstance = new ProductsDatabase();
+        }
+        return Productinstance;
+
+    }
     public static HashMap<String, Integer> productQuantity = new HashMap<>();
     public static HashMap<String, Integer> categoryCount = new HashMap<>();
 

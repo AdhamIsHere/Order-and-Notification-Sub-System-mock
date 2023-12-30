@@ -8,7 +8,7 @@ public abstract class Order {
     String id;
     float Total = 0;
     Customer owner =null;
-    String ownerHelper;
+    String ownerID;
 
     public Order(String id, String owner) {
         this.id = id;
@@ -28,8 +28,8 @@ public abstract class Order {
         this.owner = owner;
     }
 
-    public void setOwnerHelper(String ownerHelper) {
-        this.ownerHelper = ownerHelper;
+    public void setOwnerID(String ownerID) {
+        this.ownerID = ownerID;
     }
 
     public String getId() {
@@ -48,7 +48,7 @@ public abstract class Order {
         Total = total;
     }
 
-    public Customer getOwnerHelper() {
+    public Customer getOwnerID() {
         return owner;
     }
 
@@ -73,8 +73,8 @@ public abstract class Order {
         return "Order{" +
                 "id='" + id + '\'' +
                 ", Total=" + Total +
-                ", owner1=" + owner +
-                ", owner='" + ownerHelper + '\'' +
+                ", owner=" + owner +
+                ", ownerID='" + ownerID + '\'' +
                 '}';
     }
 }

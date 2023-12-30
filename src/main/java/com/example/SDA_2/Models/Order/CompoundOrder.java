@@ -1,5 +1,6 @@
 package com.example.SDA_2.Models.Order;
 
+import com.example.SDA_2.Data.CustomerDatabase;
 import com.example.SDA_2.Models.Customer;
 import com.example.SDA_2.Models.Product.Product;
 
@@ -10,11 +11,15 @@ public class CompoundOrder extends Order {
 
     ArrayList<SimpleOrder> orders = new ArrayList<>();
 
-    public CompoundOrder(String id, String owner,ArrayList<SimpleOrder> orders) {
-        super(id, owner);
-        this.orders=orders;
-    }
 
+
+    public CompoundOrder(String id,String ownerID , ArrayList<SimpleOrder> orders) {
+        this.id=id;
+        this.ownerID=ownerID;
+        owner= CustomerDatabase.getCustomerByUsername(ownerID);
+        this.orders = orders;
+        this.Total=calcTotal();
+    }
 
     public ArrayList<SimpleOrder> getOrders() {
         return orders;

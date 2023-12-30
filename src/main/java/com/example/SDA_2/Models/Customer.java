@@ -1,5 +1,7 @@
 package com.example.SDA_2.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Customer {
     String name,userName,password;
     float balance;
@@ -14,6 +16,7 @@ public class Customer {
 
     }
 
+    @JsonProperty("name")
     public String getName() {
         return name;
     }

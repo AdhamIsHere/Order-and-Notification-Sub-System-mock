@@ -12,6 +12,7 @@ public class SimpleOrder extends Order {
     public SimpleOrder(String id, String  owner,ArrayList<Product> products) {
         super(id,owner);
         this.products = products;
+        this.Total=calcTotal();
     }
 
     public SimpleOrder() {
@@ -63,7 +64,7 @@ public class SimpleOrder extends Order {
                 ", id='" + id + '\'' +
                 ", Total=" + Total +
                 ", owner1=" + owner +
-                ", owner='" + ownerHelper + '\'' +
+                ", owner='" + ownerID + '\'' +
                 '}';
     }
 }

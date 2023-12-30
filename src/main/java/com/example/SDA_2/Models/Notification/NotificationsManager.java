@@ -29,7 +29,7 @@ class NotificationsManager {
 
         channel.sendNotification(recipient, message);
 
-        notificationsQueue.enqueueNotification(new Notification());
+        //notificationsQueue.enqueueNotification(new Notification());
     }
 
     public List<Notification> listNotificationsQueueContent() {

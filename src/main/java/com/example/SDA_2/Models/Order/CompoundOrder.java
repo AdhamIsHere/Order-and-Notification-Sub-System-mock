@@ -7,19 +7,20 @@ import java.util.ArrayList;
 
 public class CompoundOrder extends Order {
 
-    ArrayList<Order> orders = new ArrayList<>();
 
-    public CompoundOrder(String id, String owner,ArrayList<Order> orders) {
+    ArrayList<SimpleOrder> orders = new ArrayList<>();
+
+    public CompoundOrder(String id, String owner,ArrayList<SimpleOrder> orders) {
         super(id, owner);
         this.orders=orders;
     }
 
 
-    public ArrayList<Order> getOrders() {
+    public ArrayList<SimpleOrder> getOrders() {
         return orders;
     }
 
-    public void setOrders(ArrayList<Order> orders) {
+    public void setOrders(ArrayList<SimpleOrder> orders) {
         this.orders = orders;
     }
 
@@ -44,7 +45,7 @@ public class CompoundOrder extends Order {
 
     public boolean addProduct(Customer c, Product... p) {
 
-        Order NewOrder = new SimpleOrder();
+        SimpleOrder NewOrder = new SimpleOrder();
         NewOrder.addProduct(c, p);
         orders.add(NewOrder);
         return true;

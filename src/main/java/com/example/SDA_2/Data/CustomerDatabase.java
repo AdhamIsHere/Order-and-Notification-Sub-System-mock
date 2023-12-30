@@ -10,9 +10,6 @@ public class CustomerDatabase {
             new Customer("ahmed1", "ahmed12", "ahmed1554", 500),
             new Customer("ahmed2", "ahmed13", "ahmed1554", 5000)));
 
-    CustomerDatabase() {
-
-    }
 
     public static Boolean addCustomer(Customer c) {
         if (customers.contains(c)) {

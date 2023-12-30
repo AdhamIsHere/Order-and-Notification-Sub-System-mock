@@ -2,34 +2,34 @@ package com.example.SDA_2.Models.Order;
 
 import com.example.SDA_2.Data.CustomerDatabase;
 import com.example.SDA_2.Models.Customer;
-import com.example.SDA_2.Models.Product;
+import com.example.SDA_2.Models.Product.Product;
 
 public abstract class Order {
     String id;
     float Total = 0;
-    Customer owner1=null;
-    String owner;
+    Customer owner =null;
+    String ownerHelper;
 
     public Order(String id, String owner) {
         this.id = id;
         Total = calcTotal();
-        this.owner1 = CustomerDatabase.getCustomerByUsername(owner);
+        this.owner = CustomerDatabase.getCustomerByUsername(owner);
     }
 
     public Order() {
 
     }
 
-    public Customer getOwner1() {
-        return owner1;
+    public Customer getOwner() {
+        return owner;
     }
 
-    public void setOwner1(Customer owner1) {
-        this.owner1 = owner1;
-    }
-
-    public void setOwner(String owner) {
+    public void setOwner(Customer owner) {
         this.owner = owner;
+    }
+
+    public void setOwnerHelper(String ownerHelper) {
+        this.ownerHelper = ownerHelper;
     }
 
     public String getId() {
@@ -48,13 +48,10 @@ public abstract class Order {
         Total = total;
     }
 
-    public Customer getOwner() {
-        return owner1;
+    public Customer getOwnerHelper() {
+        return owner;
     }
 
-    public void setOwner(Customer owner1) {
-        this.owner1 = owner1;
-    }
 
 
     public abstract float calcTotal();
@@ -76,8 +73,8 @@ public abstract class Order {
         return "Order{" +
                 "id='" + id + '\'' +
                 ", Total=" + Total +
-                ", owner1=" + owner1 +
-                ", owner='" + owner + '\'' +
+                ", owner1=" + owner +
+                ", owner='" + ownerHelper + '\'' +
                 '}';
     }
 }

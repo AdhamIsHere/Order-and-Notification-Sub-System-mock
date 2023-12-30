@@ -1,10 +1,9 @@
 package com.example.SDA_2.Models.Order;
 
 import com.example.SDA_2.Models.Customer;
-import com.example.SDA_2.Models.Product;
+import com.example.SDA_2.Models.Product.Product;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CompoundOrder extends Order {
 

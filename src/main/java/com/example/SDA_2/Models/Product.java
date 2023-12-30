@@ -12,6 +12,14 @@ public class Product {
         this.serialNumber = serialNumber;
     }
 
+    public Product(String serialNumber, String name, String vendor, String category, float price) {
+        this.serialNumber = serialNumber;
+        this.name = name;
+        this.vendor = vendor;
+        this.category = category;
+        this.price = price;
+    }
+
     public String getName() {
         return name;
     }

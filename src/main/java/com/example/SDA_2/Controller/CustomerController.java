@@ -1,7 +1,9 @@
 package com.example.SDA_2.Controller;
 
 import com.example.SDA_2.Data.CustomerDatabase;
+import com.example.SDA_2.Data.OrdersDatabase;
 import com.example.SDA_2.Models.Customer;
+import com.example.SDA_2.Models.Order.Order;
 import com.example.SDA_2.Models.Response;
 import com.example.SDA_2.Services.AccountServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
-    Customer loggedin;
+    public static Customer loggedin;
     @Autowired
     AccountServiceImp accountService;
     @PostMapping("/add")
@@ -51,5 +53,9 @@ public class CustomerController {
             res.setMessage("Logged in Successfully");
         }
         return res;
+    }
+    @GetMapping("/get/orders")
+    public Order[] getOrders(){
+       return OrdersDatabase.getCustomerOrder(CustomerController.loggedin).toArray(new Order[0]);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.SDA_2.Data;
 
 import com.example.SDA_2.Models.Customer;
-import com.example.SDA_2.Models.Order;
+import com.example.SDA_2.Models.Order.Order;
 
 import java.util.ArrayList;
 import java.util.HashMap;

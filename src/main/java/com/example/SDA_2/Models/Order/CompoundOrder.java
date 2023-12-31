@@ -73,11 +73,15 @@ public class CompoundOrder extends Order {
 
     @Override
     public boolean shipOrder(float fees) {
+        if (placed){
         float fee = shippingFee/orders.size();
         for(SimpleOrder i: orders){
             i.shipOrder(fee);
         }
         return true;
+        }else {
+            return false;
+        }
     }
 
     @Override

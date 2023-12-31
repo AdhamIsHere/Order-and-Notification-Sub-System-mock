@@ -36,6 +36,7 @@ public class OrderServiceImp implements OrderService {
         Order o = ordersDatabase.getOrderByID(id);
         res.setStatus(o.deductFees());
         if (res.isStatus()){
+            o.setPlaced(true);
             res.setMessage("Order placed and fees deducted");
         }else {
             res.setMessage("Couldn't place Order");

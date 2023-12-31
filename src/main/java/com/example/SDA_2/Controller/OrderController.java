@@ -6,10 +6,7 @@ import com.example.SDA_2.Models.Order.CompoundOrder;
 import com.example.SDA_2.Models.Order.SimpleOrder;
 import com.example.SDA_2.Services.OrderServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/order")
@@ -40,5 +37,10 @@ public class OrderController {
         res = orderServiceImp.createOrder(o);
         o.updateDatabase();
         return res;
+    }
+
+    @PutMapping("confirm/{id}")
+    public Response confirmOrder(@PathVariable String id){
+        return orderServiceImp.confirmOrder(id);
     }
 }

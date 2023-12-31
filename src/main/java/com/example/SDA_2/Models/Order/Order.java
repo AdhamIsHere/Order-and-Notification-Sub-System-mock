@@ -3,6 +3,7 @@ package com.example.SDA_2.Models.Order;
 import com.example.SDA_2.Data.CustomerDatabase;
 import com.example.SDA_2.Models.Customer;
 import com.example.SDA_2.Models.Product.Product;
+import com.example.SDA_2.Models.Product.ProductHelper;
 
 public abstract class Order {
     protected String id;
@@ -53,6 +54,7 @@ public abstract class Order {
 
     public abstract float calcTotal();
     public abstract void printOrder();
+    public abstract boolean deductFees();
     public boolean addOrder(Order o){
         throw new UnsupportedOperationException();
     }
@@ -63,7 +65,7 @@ public abstract class Order {
         throw new UnsupportedOperationException();
     }
 
-    public abstract boolean addProduct(Customer c, Product... p);
+    public abstract boolean addProduct(Customer c, ProductHelper... p);
 
     @Override
     public String toString() {

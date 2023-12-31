@@ -48,4 +48,15 @@ public static OrdersDatabase getInstance()
         orders.get(c).remove(o);
         return true;
     }
+
+    public Order getOrderByID(String id) {
+        for (ArrayList<Order> orderList : orders.values()) {
+            for (Order order : orderList) {
+                if (order.getId().equals(id)) {
+                    return order;
+                }
+            }
+        }
+        return null;
+    }
 }

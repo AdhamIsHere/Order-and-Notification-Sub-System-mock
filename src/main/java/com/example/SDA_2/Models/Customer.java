@@ -3,7 +3,7 @@ package com.example.SDA_2.Models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Customer {
-    String name,userName,password;
+    String name, userName, password;
     float balance;
 
     public Customer(String name, String userName, String password, float balance) {
@@ -12,7 +12,8 @@ public class Customer {
         this.password = password;
         this.balance = balance;
     }
-    public Customer(){
+
+    public Customer() {
 
     }
 
@@ -47,6 +48,14 @@ public class Customer {
 
     public void setBalance(float balance) {
         this.balance = balance;
+    }
+
+    public boolean deductFees(float fee) {
+        if (fee > balance) {
+            return false;
+        }
+        balance = balance - fee;
+        return true;
     }
 
     @Override

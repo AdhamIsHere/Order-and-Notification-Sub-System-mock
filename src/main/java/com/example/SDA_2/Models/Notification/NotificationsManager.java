@@ -38,7 +38,20 @@ class NotificationsManager {
 
 
         ConcreteNotificationFactory notification = new ConcreteNotificationFactory();
-        notification.createNotification(templateType);
+
+        String type = null;
+
+        if (templateType == "orderCancelling")
+        {
+            type = "cancelling";
+        } else if (templateType == "orderPlacement") {
+            type = "confirmation";
+        } else if (templateType == "orderShipment") {
+
+            type = "shipping";
+        }
+
+        notification.createNotification(type);
 
 
         notificationsQueue.enqueueNotification((Notification) notification);

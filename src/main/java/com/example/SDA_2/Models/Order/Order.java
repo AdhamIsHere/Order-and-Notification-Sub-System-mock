@@ -5,27 +5,24 @@ import com.example.SDA_2.Models.Customer;
 import com.example.SDA_2.Models.Product.Product;
 
 public abstract class Order {
-    String id;
-    float Total = 0;
-    Customer owner =null;
-    String ownerID;
+    protected String id;
+    protected float Total = 0;
+    protected  Customer owner =null;
+    protected String ownerID;
+    protected CustomerDatabase customerDatabase = CustomerDatabase.getCustomerinstance();
 
-    public Order(String id, String owner) {
-        this.id = id;
-        Total = calcTotal();
-        this.owner = CustomerDatabase.getCustomerByUsername(owner);
-    }
 
     public Order() {
 
     }
 
     public Customer getOwner() {
+        this.owner = customerDatabase.getCustomerByUsername(ownerID);
         return owner;
     }
 
     public void setOwner(Customer owner) {
-        this.owner = owner;
+        this.owner = customerDatabase.getCustomerByUsername(ownerID);
     }
 
     public void setOwnerID(String ownerID) {
@@ -48,8 +45,8 @@ public abstract class Order {
         Total = total;
     }
 
-    public Customer getOwnerID() {
-        return owner;
+    public String getOwnerID() {
+        return ownerID;
     }
 
 

@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderServiceImp implements OrderService{
+    OrdersDatabase ordersDatabase = OrdersDatabase.getInstance();
     @Override
     public Response createOrder(Order o) {
         Response res = new Response();
         o.setOwner(CustomerController.loggedin);
-        OrdersDatabase.addNewOrder(CustomerController.loggedin,o);
+        ordersDatabase.addNewOrder(CustomerController.loggedin,o);
         System.out.println(o);
         res.setStatus(true);
         res.setMessage("Order created");

@@ -38,6 +38,7 @@ public class OrderController {
             return res;
         }
         res = orderServiceImp.createOrder(o);
+        o.updateDatabase();
         return res;
     }
 }

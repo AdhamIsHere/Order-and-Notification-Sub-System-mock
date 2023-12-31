@@ -19,13 +19,13 @@ public static OrdersDatabase getInstance()
     return Orderinstance;
 
 }
-    static HashMap<Customer, ArrayList<Order>> orders = new HashMap<>();
+     HashMap<Customer, ArrayList<Order>> orders = new HashMap<>();
 
-    public static ArrayList<Order> getCustomerOrder(Customer c)
+    public  ArrayList<Order> getCustomerOrder(Customer c)
     {
         return orders.get(c);
     }
-    public static void addNewOrder(Customer c, Order o)
+    public  void addNewOrder(Customer c, Order o)
     {
         if(orders.containsKey(c))
         {
@@ -37,7 +37,7 @@ public static OrdersDatabase getInstance()
             orders.put(c,newOrder);
         }
     }
-    public static boolean removeOrder(Customer c, Order o)
+    public  boolean removeOrder(Customer c, Order o)
     {
         if(!orders.containsKey(c)){
             return false;

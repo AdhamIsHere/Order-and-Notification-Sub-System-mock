@@ -1,6 +1,7 @@
 package com.example.SDA_2.Models.Order;
 
 import com.example.SDA_2.Data.CustomerDatabase;
+import com.example.SDA_2.Data.OrdersDatabase;
 import com.example.SDA_2.Models.Customer;
 import com.example.SDA_2.Models.Product.Product;
 
@@ -9,14 +10,14 @@ import java.util.ArrayList;
 public class CompoundOrder extends Order {
 
 
-    ArrayList<SimpleOrder> orders = new ArrayList<>();
+    ArrayList<SimpleOrder> orders ;
 
 
 
     public CompoundOrder(String id,String ownerID , ArrayList<SimpleOrder> orders) {
         this.id=id;
         this.ownerID=ownerID;
-        owner= CustomerDatabase.getCustomerByUsername(ownerID);
+        owner= customerDatabase.getCustomerByUsername(ownerID);
         this.orders = orders;
         this.Total=calcTotal();
     }
@@ -55,4 +56,10 @@ public class CompoundOrder extends Order {
         orders.add(NewOrder);
         return true;
     }
+    public void updateDatabase(){
+        for (SimpleOrder i:orders){
+            OrdersDatabase.getInstance().addNewOrder(i.getOwner(),i);
+        }
+    }
+
 }

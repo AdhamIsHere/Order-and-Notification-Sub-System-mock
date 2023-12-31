@@ -8,6 +8,8 @@ import com.example.SDA_2.Services.ProductServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -31,8 +33,11 @@ public class ProductController {
 
     @GetMapping("/get/{serial}")
     public ProductHelper getProduct (@PathVariable("serial") String serial){
-
-
         return productServiceImp.getProduct(serial);
     }
+    @GetMapping("/getAll")
+    public HashMap<Product,Integer> getAllProducts(){
+        return productServiceImp.getAllProducts();
+    }
+
 }

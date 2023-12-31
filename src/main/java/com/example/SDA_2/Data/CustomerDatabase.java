@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class CustomerDatabase
 {
-    private static ArrayList<Customer> customers;
+    private ArrayList<Customer> customers;
     private static CustomerDatabase Customerinstance =null;
     private CustomerDatabase()
     {
@@ -28,7 +28,7 @@ public class CustomerDatabase
         }
 
 
-    public static Boolean addCustomer(Customer c)
+    public  Boolean addCustomer(Customer c)
     {
         if (customers.contains(c))
         {
@@ -39,12 +39,12 @@ public class CustomerDatabase
 
     }
 
-    public static void removeCustomer(Customer c)
+    public  void removeCustomer(Customer c)
     {
         customers.remove(c);
     }
 
-    public static Customer getCustomerByUsername(String un)
+    public  Customer getCustomerByUsername(String un)
     {
         for (Customer i : customers)
         {
@@ -53,7 +53,7 @@ public class CustomerDatabase
         return null;
     }
 
-    public static Customer getCustomerByUsernameAndPassword(String un, String pw)
+    public  Customer getCustomerByUsernameAndPassword(String un, String pw)
     {
         for (Customer customer : customers)
         {
@@ -62,7 +62,7 @@ public class CustomerDatabase
         return null;
     }
 
-    public static Customer[] getAllCustomers()
+    public  Customer[] getAllCustomers()
     {
         return customers.toArray(new Customer[0]);
     }

@@ -9,10 +9,14 @@ import com.example.SDA_2.Services.AccountServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
     public static Customer loggedin;
+    private CustomerDatabase customerDatabase = CustomerDatabase.getCustomerinstance();
+    private OrdersDatabase ordersDatabase= OrdersDatabase.getInstance();
     @Autowired
     AccountServiceImp accountService;
     @PostMapping("/add")
@@ -38,12 +42,12 @@ public class CustomerController {
     @GetMapping("/get/{un}")
     public Customer getByUsername(@PathVariable("un") String un){
         System.out.println("In get by username"+un);
-        return CustomerDatabase.getCustomerByUsername(un);
+        return customerDatabase.getCustomerByUsername(un);
     }
     @GetMapping("/login/{un}/{pw}")
     public Response login(@PathVariable("un") String un,@PathVariable("pw") String pw) {
         System.out.println("In Login "+un+" "+pw);
-        loggedin = CustomerDatabase.getCustomerByUsernameAndPassword(un,pw);
+        loggedin = customerDatabase.getCustomerByUsernameAndPassword(un,pw);
         Response res = new Response();
         if(loggedin == null){
             res.setStatus(false);
@@ -55,7 +59,7 @@ public class CustomerController {
         return res;
     }
     @GetMapping("/get/orders")
-    public Order[] getOrders(){
-       return OrdersDatabase.getCustomerOrder(CustomerController.loggedin).toArray(new Order[0]);
+    public ArrayList<Order> getOrders(){
+       return ordersDatabase.getCustomerOrder(CustomerController.loggedin);
     }
 }

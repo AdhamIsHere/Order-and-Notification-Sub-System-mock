@@ -9,10 +9,16 @@ import java.util.List;
 public class SimpleOrder extends Order {
     ArrayList <Product> products;
 
-    public SimpleOrder(String id, String  owner,ArrayList<Product> products) {
-        super(id,owner);
+
+
+    public SimpleOrder(String id,String ownerID,ArrayList<Product> products) {
+        this.id = id;
+        Total = calcTotal();
+        this.ownerID=ownerID;
         this.products = products;
+        this.owner = customerDatabase.getCustomerByUsername(ownerID);
         this.Total=calcTotal();
+
     }
 
     public SimpleOrder() {
@@ -63,7 +69,7 @@ public class SimpleOrder extends Order {
                 "products=" + products +
                 ", id='" + id + '\'' +
                 ", Total=" + Total +
-                ", owner1=" + owner +
+                ", owner=" + owner +
                 ", owner='" + ownerID + '\'' +
                 '}';
     }

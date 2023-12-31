@@ -6,20 +6,16 @@ public class Customer {
     String name, userName, password , channelType ,lang ;
     float balance;
 
-    public Customer(String name, String userName, String password, float balance , String lang , String channelType) {
+    public Customer(String name, String userName, String password, String channelType, String lang, float balance) {
         this.name = name;
         this.userName = userName;
         this.password = password;
-        this.balance = balance;
+        this.channelType = channelType;
         this.lang = lang;
-        this.channelType = channelType ;
+        this.balance = balance;
     }
 
-    public Customer() {
 
-    }
-
-    @JsonProperty("name")
     public String getName() {
         return name;
     }

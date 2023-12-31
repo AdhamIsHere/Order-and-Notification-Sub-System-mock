@@ -1,6 +1,7 @@
 package com.example.SDA_2.Models.Notification;
 
-public abstract class Notification {
+import com.example.SDA_2.Models.Order.Order;
 
-    // m3lomat 3n el notification
+public interface Notification {
+    String sendNotification(Order o);
 }

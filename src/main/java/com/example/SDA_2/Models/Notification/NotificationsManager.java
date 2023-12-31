@@ -1,5 +1,10 @@
 package com.example.SDA_2.Models.Notification;
 
+import com.example.SDA_2.Models.Notification.Channel.EmailNotificationChannel;
+import com.example.SDA_2.Models.Notification.Channel.NotificationChannel;
+import com.example.SDA_2.Models.Notification.Channel.NotificationsQueue;
+import com.example.SDA_2.Models.Notification.Channel.SMSNotificationChannel;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

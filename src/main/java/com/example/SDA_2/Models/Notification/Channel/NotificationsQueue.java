@@ -1,4 +1,6 @@
-package com.example.SDA_2.Models.Notification;
+package com.example.SDA_2.Models.Notification.Channel;
+
+import com.example.SDA_2.Models.Notification.Notification;
 
 import java.util.ArrayList;
 import java.util.List;

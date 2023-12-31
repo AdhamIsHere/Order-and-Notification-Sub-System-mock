@@ -57,6 +57,9 @@ public class Customer {
         balance = balance - fee;
         return true;
     }
+    public void addFees(float f){
+        balance+=f;
+    }
 
     @Override
     public String toString() {

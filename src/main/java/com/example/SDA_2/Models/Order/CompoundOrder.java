@@ -70,4 +70,22 @@ public class CompoundOrder extends Order {
         }
         return true;
     }
+
+    @Override
+    public boolean shipOrder(float fees) {
+        float fee = shippingFee/orders.size();
+        for(SimpleOrder i: orders){
+            i.shipOrder(fee);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean Cancelship(float f) {
+        float fee = shippingFee/orders.size();
+        for(SimpleOrder i: orders){
+            i.Cancelship(fee);
+        }
+        return true;
+    }
 }

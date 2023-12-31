@@ -3,10 +3,14 @@ package com.example.SDA_2.Controller;
 import com.example.SDA_2.Data.OrdersDatabase;
 import com.example.SDA_2.Models.*;
 import com.example.SDA_2.Models.Order.CompoundOrder;
+import com.example.SDA_2.Models.Order.Order;
 import com.example.SDA_2.Models.Order.SimpleOrder;
 import com.example.SDA_2.Services.OrderServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("/order")
@@ -43,4 +47,10 @@ public class OrderController {
     public Response confirmOrder(@PathVariable String id){
         return orderServiceImp.confirmOrder(id);
     }
+    @GetMapping("getAll")
+    public HashMap<Customer, ArrayList<Order>> getAll(){
+        return OrdersDatabase.getInstance().orders;
+    }
+
+
 }

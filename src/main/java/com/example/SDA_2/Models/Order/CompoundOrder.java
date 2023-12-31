@@ -4,6 +4,7 @@ import com.example.SDA_2.Data.CustomerDatabase;
 import com.example.SDA_2.Data.OrdersDatabase;
 import com.example.SDA_2.Models.Customer;
 import com.example.SDA_2.Models.Product.Product;
+import com.example.SDA_2.Models.Product.ProductHelper;
 
 import java.util.ArrayList;
 
@@ -49,7 +50,7 @@ public class CompoundOrder extends Order {
     }
 
 
-    public boolean addProduct(Customer c, Product... p) {
+    public boolean addProduct(Customer c, ProductHelper... p) {
 
         SimpleOrder NewOrder = new SimpleOrder();
         NewOrder.addProduct(c, p);
@@ -62,4 +63,11 @@ public class CompoundOrder extends Order {
         }
     }
 
+    @Override
+    public boolean deductFees() {
+        for(SimpleOrder i: orders){
+            i.deductFees();
+        }
+        return true;
+    }
 }

@@ -7,13 +7,14 @@ import com.example.SDA_2.Models.Response;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OrderServiceImp implements OrderService{
+public class OrderServiceImp implements OrderService {
     OrdersDatabase ordersDatabase = OrdersDatabase.getInstance();
+
     @Override
     public Response createOrder(Order o) {
         Response res = new Response();
         o.setOwner(CustomerController.loggedin);
-        ordersDatabase.addNewOrder(CustomerController.loggedin,o);
+        ordersDatabase.addNewOrder(CustomerController.loggedin, o);
         System.out.println(o);
         res.setStatus(true);
         res.setMessage("Order created");
@@ -21,8 +22,22 @@ public class OrderServiceImp implements OrderService{
     }
 
     @Override
+    //TODO
     public Response cancelOrder(String id) {
         Response res = new Response();
+        return res;
+    }
+
+    @Override
+    public Response confirmOrder(String id) {
+        Response res = new Response();
+        Order o = ordersDatabase.getOrderByID(id);
+        res.setStatus(o.deductFees());
+        if (res.isStatus()){
+            res.setMessage("Order placed and fees deducted");
+        }else {
+            res.setMessage("Couldn't place Order");
+        }
         return res;
     }
 }

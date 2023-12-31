@@ -2,16 +2,17 @@ package com.example.SDA_2.Models.Order;
 
 import com.example.SDA_2.Models.Customer;
 import com.example.SDA_2.Models.Product.Product;
+import com.example.SDA_2.Models.Product.ProductHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleOrder extends Order {
-    ArrayList <Product> products;
+    ArrayList <ProductHelper> products;
 
 
 
-    public SimpleOrder(String id,String ownerID,ArrayList<Product> products) {
+    public SimpleOrder(String id,String ownerID,ArrayList<ProductHelper> products) {
         this.id = id;
         Total = calcTotal();
         this.ownerID=ownerID;
@@ -25,11 +26,11 @@ public class SimpleOrder extends Order {
 
     }
 
-    public ArrayList<Product> getProducts() {
+    public ArrayList<ProductHelper> getProducts() {
         return products;
     }
 
-    public void setProducts(ArrayList<Product> products) {
+    public void setProducts(ArrayList<ProductHelper> products) {
         this.products = products;
     }
 
@@ -37,9 +38,9 @@ public class SimpleOrder extends Order {
     @Override
     public float calcTotal() {
         float sum=0;
-        for(Product i : products)
+        for(ProductHelper i : products)
         {
-            sum += i.getPrice();
+            sum += (i.getProduct().getPrice()*i.getQuantity());
         }
         System.out.println("Total price of order "+this.id+" is "+sum);
         Total=sum;
@@ -49,7 +50,7 @@ public class SimpleOrder extends Order {
     @Override
     public void printOrder() {
 
-        for(Product i : products)
+        for(ProductHelper i : products)
         {
             System.out.println(i.toString()) ;
         }
@@ -57,7 +58,7 @@ public class SimpleOrder extends Order {
     }
 
     @Override
-    public boolean addProduct(Customer c, Product... p) {
+    public boolean addProduct(Customer c, ProductHelper... p) {
         products.addAll(List.of(p));
         owner = c ;
         return true ;
@@ -72,5 +73,10 @@ public class SimpleOrder extends Order {
                 ", owner=" + owner +
                 ", owner='" + ownerID + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean deductFees() {
+       return customerDatabase.getCustomerByUsername(this.ownerID).deductFees(Total);
     }
 }

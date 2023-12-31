@@ -12,9 +12,9 @@ public class CustomerDatabase
     private CustomerDatabase()
     {
         customers = new ArrayList<>(Arrays.asList
-                (new Customer("ahmed", "ahmed1", "ahmed123", 1000),
-                new Customer("adham", "adham1", "adham123", 20000),
-                new Customer("tamer", "tamer1", "tamer123", 25000)));
+                (new Customer("ahmed", "ahmed1", "ahmed123", 999999),
+                new Customer("adham", "adham1", "adham123", 999999),
+                new Customer("tamer", "tamer1", "tamer123", 999999)));
     }
 
 

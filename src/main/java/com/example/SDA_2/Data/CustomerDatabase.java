@@ -16,9 +16,9 @@ public class CustomerDatabase {
 
     private CustomerDatabase() {
         customers = new ArrayList<>(Arrays.asList
-                (new Customer("ahmed", "ahmed1", "ahmed123", "sms", "arabic", 999999),
-                        new Customer("adham", "adham1", "adham123", "email", "english", 999999),
-                        new Customer("tamer", "tamer1", "tamer123", "sms", "arabic", 999999)));
+                (new Customer("ahmed", "ahmed1", "ahmed123", "sms", 999999),
+                        new Customer("adham", "adham1", "adham123", "email", 999999),
+                        new Customer("tamer", "tamer1", "tamer123", "sms", 999999)));
     }
 
     static {

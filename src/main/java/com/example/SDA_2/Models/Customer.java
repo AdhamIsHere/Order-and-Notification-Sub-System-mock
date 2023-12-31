@@ -3,14 +3,16 @@ package com.example.SDA_2.Models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Customer {
-    String name, userName, password;
+    String name, userName, password , channelType ,lang ;
     float balance;
 
-    public Customer(String name, String userName, String password, float balance) {
+    public Customer(String name, String userName, String password, float balance , String lang , String channelType) {
         this.name = name;
         this.userName = userName;
         this.password = password;
         this.balance = balance;
+        this.lang = lang;
+        this.channelType = channelType ;
     }
 
     public Customer() {
@@ -49,6 +51,25 @@ public class Customer {
     public void setBalance(float balance) {
         this.balance = balance;
     }
+
+
+    public void setLang(String lang) {
+        this.lang = lang;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+
+    public void setChannelType(String lang) {
+        this.channelType = channelType;
+    }
+
+    public String getChannelType() {
+        return channelType;
+    }
+
 
     public boolean deductFees(float fee) {
         if (fee > balance) {

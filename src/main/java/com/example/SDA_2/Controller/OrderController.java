@@ -1,11 +1,9 @@
 package com.example.SDA_2.Controller;
 
+import com.example.SDA_2.Data.CustomerDatabase;
 import com.example.SDA_2.Data.OrdersDatabase;
 import com.example.SDA_2.Models.*;
-import com.example.SDA_2.Models.Notification.FailNotification;
-import com.example.SDA_2.Models.Notification.Notification;
-import com.example.SDA_2.Models.Notification.OrderConfirmedNotification;
-import com.example.SDA_2.Models.Notification.OrderPlacedNotification;
+import com.example.SDA_2.Models.Notification.*;
 import com.example.SDA_2.Models.Order.CompoundOrder;
 import com.example.SDA_2.Models.Order.Order;
 import com.example.SDA_2.Models.Order.SimpleOrder;
@@ -20,19 +18,23 @@ import java.util.HashMap;
 @RequestMapping("/order")
 public class OrderController {
     Notification notification = null;
+    NotificationService no_ser = new NotificationService() ;
     @Autowired
     OrderServiceImp orderServiceImp;
 
     @PostMapping("/create/simple")
     public String createSimpleOrder(@RequestBody SimpleOrder o) {
         Response res = new Response();
+        String channel =  CustomerDatabase.getCustomerinstance().getCustomerByUsername(o.getOwnerID()).getChannelType();
+
+        no_ser.setNotificationChannel(CustomerDatabase.messageChannels.get(channel));
 
         if (CustomerController.loggedin == null) {
             res.setStatus(false);
             res.setMessage("Must Login First");
             notification = new FailNotification();
             notification.setMessage(o);
-            return res.getMessage();
+            return no_ser.send(notification.getMessage());
         }
         o.calcTotal();
         res = orderServiceImp.createOrder(o);
@@ -43,7 +45,7 @@ public class OrderController {
 
         }
         notification.setMessage(o);
-        return notification.getMessage();
+        return no_ser.send (notification.getMessage());
     }
 
     @PostMapping("/create/compound")
@@ -54,7 +56,7 @@ public class OrderController {
             res.setMessage("Must Login First");
             return res.getMessage();
         }
-        res = orderServiceImp.createOrder(o);
+//        res = orderServiceImp.createOrder(o);
         o.updateDatabase();
         if (res.isStatus()) {
             notification = new OrderPlacedNotification();

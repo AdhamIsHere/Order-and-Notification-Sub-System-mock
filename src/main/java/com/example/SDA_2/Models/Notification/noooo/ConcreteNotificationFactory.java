@@ -1,6 +1,8 @@
-package com.example.SDA_2.Models.Notification;
+package com.example.SDA_2.Models.Notification.noooo;
 
-public class ConcreteNotificationFactory implements NotificationFactory {
+public class ConcreteNotificationFactory implements NotificationFactory
+{
+
     @Override
     public Notification createNotification(String type) {
         switch (type)

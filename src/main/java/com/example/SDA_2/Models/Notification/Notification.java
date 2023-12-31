@@ -4,7 +4,7 @@ import com.example.SDA_2.Models.Order.Order;
 
 public abstract class Notification {
 
-    String message;
+    protected String message;
 
     public String getMessage() {
         return message;

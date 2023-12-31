@@ -21,20 +21,23 @@ public class OrderController {
     NotificationService no_ser = new NotificationService() ;
     @Autowired
     OrderServiceImp orderServiceImp;
+    CustomerDatabase customerDatabase= CustomerDatabase.getCustomerinstance();
+    OrdersDatabase ordersDatabase=OrdersDatabase.getInstance();
+
 
     @PostMapping("/create/simple")
     public String createSimpleOrder(@RequestBody SimpleOrder o) {
         Response res = new Response();
-        String channel =  CustomerDatabase.getCustomerinstance().getCustomerByUsername(o.getOwnerID()).getChannelType();
+        String channel =  customerDatabase.getCustomerByUsername(o.getOwnerID()).getChannelType();
 
-        no_ser.setNotificationChannel(CustomerDatabase.messageChannels.get(channel));
+        no_ser.setNotificationChannel(customerDatabase.messageChannels.get(channel));
 
         if (CustomerController.loggedin == null) {
             res.setStatus(false);
             res.setMessage("Must Login First");
             notification = new FailNotification();
             notification.setMessage(o);
-            return no_ser.send(notification.getMessage());
+            return res.getMessage();
         }
         o.calcTotal();
         res = orderServiceImp.createOrder(o);
@@ -51,12 +54,15 @@ public class OrderController {
     @PostMapping("/create/compound")
     public String createCompoundOrder(@RequestBody CompoundOrder o) {
         Response res = new Response();
+        String channel =  customerDatabase.getCustomerByUsername(o.getOwnerID()).getChannelType();
+
+        no_ser.setNotificationChannel(customerDatabase.messageChannels.get(channel));
         if (CustomerController.loggedin == null) {
             res.setStatus(false);
             res.setMessage("Must Login First");
             return res.getMessage();
         }
-//        res = orderServiceImp.createOrder(o);
+        res = orderServiceImp.createOrder(o);
         o.updateDatabase();
         if (res.isStatus()) {
             notification = new OrderPlacedNotification();
@@ -66,7 +72,7 @@ public class OrderController {
 
         }
         notification.setMessage(o);
-        return notification.getMessage();
+        return no_ser.send (notification.getMessage());
     }
 
     @PutMapping("confirm/{id}")
@@ -77,11 +83,15 @@ public class OrderController {
         } else {
             notification = new FailNotification();
         }
-        notification.setMessage(OrdersDatabase.getInstance().getOrderByID(id));
-        return notification.getMessage();
+        String channel =  customerDatabase.getCustomerByUsername(ordersDatabase.getOrderByID(id).getOwnerID()).getChannelType();
+
+        no_ser.setNotificationChannel(customerDatabase.messageChannels.get(channel));
+
+        notification.setMessage(ordersDatabase.getOrderByID(id));
+        return  no_ser.send (notification.getMessage());
     }
 
-    @GetMapping("getAll")
+    @GetMapping("/getAll")
     public HashMap<Customer, ArrayList<Order>> getAll() {
         return OrdersDatabase.getInstance().orders;
     }

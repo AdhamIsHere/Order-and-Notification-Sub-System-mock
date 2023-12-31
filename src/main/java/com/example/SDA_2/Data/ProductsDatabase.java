@@ -14,8 +14,8 @@ public class ProductsDatabase {
     private ProductsDatabase() {
 
         addProduct(new Product("1234", "Hoodie", "Zara", "Clothes", 500),3);
-        addProduct(new Product("5678", "Mobile", "Tradeline", "Electronics", 15000),5);
-        addProduct(new Product("9101", "Neckless", "Lazurde", "Jewellery", 5500),10);
+        addProduct(new Product("5678", "Mobile", "Tradeline", "Electronics", 1500),5);
+        addProduct(new Product("9101", "Neckless", "Lazurde", "Jewellery", 5000),10);
 
     }
 
@@ -40,7 +40,7 @@ public class ProductsDatabase {
                 return true;
             }
             products.put(p,q);
-            categoryCount.put(p.getSerialNumber(),q);
+            categoryCount.put(p.getCategory(),q);
             return true;
         }catch (Exception e){
             return false;

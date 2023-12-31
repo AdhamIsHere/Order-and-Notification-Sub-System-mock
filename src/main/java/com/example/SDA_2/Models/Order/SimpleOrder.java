@@ -4,6 +4,7 @@ import com.example.SDA_2.Models.Customer;
 import com.example.SDA_2.Models.Product.Product;
 import com.example.SDA_2.Models.Product.ProductHelper;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,6 +87,7 @@ public class SimpleOrder extends Order {
     public boolean shipOrder(float f) {
         if(placed){
             shipped=true;
+            shippingTime = LocalDateTime.now();
             return customerDatabase.getCustomerByUsername(this.ownerID).deductFees(f);
         }
         return false;
@@ -93,7 +95,7 @@ public class SimpleOrder extends Order {
 
     @Override
     public boolean Cancelship(float f) {
-        if(placed){
+        if(placed && shippingTime.plusMinutes(3).isAfter(LocalDateTime.now())){
             shipped=false;
             customerDatabase.getCustomerByUsername(this.ownerID).addFees(f);
             return true;

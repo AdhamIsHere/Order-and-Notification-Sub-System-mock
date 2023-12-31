@@ -39,5 +39,8 @@ public class ProductController {
     public HashMap<Product,Integer> getAllProducts(){
         return productServiceImp.getAllProducts();
     }
-
+    @GetMapping("/category")
+    public HashMap<String,Integer> getAllCate(){
+        return ProductsDatabase.GetProductInstance().categoryCount;
+    }
 }

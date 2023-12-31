@@ -4,7 +4,7 @@ public class SMSNotificationChannel implements NotificationChannel {
     @Override
     public String sendNotification(String message) {
 
-        return ("SMS..." + message);
+        return ("Sent Through SMS: " + message);
 
     }
 }

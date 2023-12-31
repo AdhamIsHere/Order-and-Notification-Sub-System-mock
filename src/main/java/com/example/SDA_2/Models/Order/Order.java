@@ -5,6 +5,8 @@ import com.example.SDA_2.Models.Customer;
 import com.example.SDA_2.Models.Product.Product;
 import com.example.SDA_2.Models.Product.ProductHelper;
 
+import java.time.LocalDateTime;
+
 public abstract class Order {
     protected String id;
     protected float Total = 0;
@@ -12,6 +14,7 @@ public abstract class Order {
     protected String ownerID;
     protected float shippingFee=200;
     protected boolean shipped=false,placed=false;
+    protected LocalDateTime shippingTime;
 
     public boolean isShipped() {
         return shipped;

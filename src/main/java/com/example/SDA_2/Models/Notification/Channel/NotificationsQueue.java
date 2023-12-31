@@ -1,18 +1,20 @@
 package com.example.SDA_2.Models.Notification.Channel;
 
-import com.example.SDA_2.Models.Notification.noooo.Notification;
-
+import com.example.SDA_2.Models.Notification.Notification;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationsQueue {
+public class NotificationsQueue
+{
     private List<Notification> queue = new ArrayList<>();
 
-    public void enqueueNotification(Notification notification) {
+    public void enqueueNotification(Notification notification)
+    {
         queue.add(notification);
     }
 
-    public List<Notification> getQueueContent() {
+    public List<Notification> getQueueContent()
+    {
         return queue;
     }
 }

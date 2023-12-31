@@ -3,12 +3,14 @@ package com.example.SDA_2.Services;
 import com.example.SDA_2.Controller.CustomerController;
 import com.example.SDA_2.Data.OrdersDatabase;
 import com.example.SDA_2.Models.Order.Order;
+import com.example.SDA_2.Models.Order.ShipmentManager;
 import com.example.SDA_2.Models.Response;
 import org.springframework.stereotype.Service;
 
 @Service
 public class OrderServiceImp implements OrderService {
     OrdersDatabase ordersDatabase = OrdersDatabase.getInstance();
+
 
     @Override
     public Response createOrder(Order o) {
@@ -40,4 +42,6 @@ public class OrderServiceImp implements OrderService {
         }
         return res;
     }
+
+
 }

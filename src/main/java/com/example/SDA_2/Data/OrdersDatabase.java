@@ -19,7 +19,7 @@ public static OrdersDatabase getInstance()
     return Orderinstance;
 
 }
-     HashMap<Customer, ArrayList<Order>> orders = new HashMap<>();
+    public HashMap<Customer, ArrayList<Order>> orders = new HashMap<>();
 
     public  ArrayList<Order> getCustomerOrder(Customer c)
     {

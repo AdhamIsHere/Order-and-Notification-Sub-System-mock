@@ -64,6 +64,8 @@ public class SimpleOrder extends Order {
         return true ;
     }
 
+
+
     @Override
     public String toString() {
         return "SimpleOrder{" +
@@ -77,6 +79,26 @@ public class SimpleOrder extends Order {
 
     @Override
     public boolean deductFees() {
-       return customerDatabase.getCustomerByUsername(this.ownerID).deductFees(Total);
+        placed=true;
+        return customerDatabase.getCustomerByUsername(this.ownerID).deductFees(Total);
+    }
+    @Override
+    public boolean shipOrder(float f) {
+        if(placed){
+            shipped=true;
+            return customerDatabase.getCustomerByUsername(this.ownerID).deductFees(f);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean Cancelship(float f) {
+        if(placed){
+            shipped=false;
+            customerDatabase.getCustomerByUsername(this.ownerID).addFees(f);
+            return true;
+        }
+        return false;
+
     }
 }

@@ -10,6 +10,25 @@ public abstract class Order {
     protected float Total = 0;
     protected  Customer owner =null;
     protected String ownerID;
+    protected float shippingFee=200;
+    protected boolean shipped=false,placed=false;
+
+    public boolean isShipped() {
+        return shipped;
+    }
+
+    public void setShipped(boolean shipped) {
+        this.shipped = shipped;
+    }
+
+    public boolean isPlaced() {
+        return placed;
+    }
+
+    public void setPlaced(boolean placed) {
+        this.placed = placed;
+    }
+
     protected CustomerDatabase customerDatabase = CustomerDatabase.getCustomerinstance();
 
 
@@ -55,6 +74,8 @@ public abstract class Order {
     public abstract float calcTotal();
     public abstract void printOrder();
     public abstract boolean deductFees();
+    public abstract boolean shipOrder(float f);
+    public abstract boolean Cancelship(float f);
     public boolean addOrder(Order o){
         throw new UnsupportedOperationException();
     }
